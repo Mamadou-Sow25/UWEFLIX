@@ -1,0 +1,16 @@
+{% extends "UWEFlix/placeholder.html" %}
+{% block title %}
+Remove film
+{% endblock %}
+{% block content %}
+<p>WARNING: You are about to delete "{{object}}"! 
+  This action is permanent and connot be undone. 
+  Are you sure you want to do this?</p>
+<form method = "POST">
+  {% csrf_token %}
+  <a href="{{ request.META.HTTP_REFERER }}">No, I want to keep "{{object}}"</a>
+  <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+  <button type="submit" class="save btn btn-default">Yes, delete "{{object}}" </button>
+</form>
+</div>
+{% endblock %}
